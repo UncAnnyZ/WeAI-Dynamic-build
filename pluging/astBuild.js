@@ -50,14 +50,14 @@ class SloveCss {
         var socketIoScript = document.createElement('script');
         socketIoScript.src = "https://cdn.socket.io/4.5.1/socket.io.min.js";
         socketIoScript.crossOrigin = "anonymous";
-        var url = new URL(window.location.href.replace('/#/', '/'));
-        var params = new URLSearchParams(url.search);
-        var host = params.get('host');
         socketIoScript.onload = function() {
             var inlineScript = document.createElement('script');
             console.log(555555551);
             inlineScript.innerHTML = 
-            "var socket = io('http://" +  host + ":10085');console.log(socket);" +
+            "var url = new URL(window.location.href.replace('/#/', '/'));" + 
+            "var params = new URLSearchParams(url.search);" + 
+            "var host = params.get('host');" + 
+            "var socket = io('http://" + host);console.log(socket);" +
             "socket.on('connect', () => {" +
                 "console.log('Connected to the server. socket');" +
             "});" +
