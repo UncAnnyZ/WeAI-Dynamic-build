@@ -1,6 +1,6 @@
 {
   "name": "@we-dynamic/build",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "we-dynamic build react",
   "main": "index.mjs",
   "bin": {

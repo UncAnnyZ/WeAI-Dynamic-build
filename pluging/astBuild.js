@@ -57,7 +57,7 @@ class SloveCss {
             "var url = new URL(window.location.href.replace('/#/', '/'));" + 
             "var params = new URLSearchParams(url.search);" + 
             "var host = params.get('host');" + 
-            "var socket = io('http://" + host);console.log(socket);" +
+            "var socket = io('http://' + host);console.log(socket);" +
             "socket.on('connect', () => {" +
                 "console.log('Connected to the server. socket');" +
             "});" +
