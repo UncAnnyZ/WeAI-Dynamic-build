@@ -40,9 +40,13 @@
     "postcss-value-parser": "^3.3.0",
     "react-router-dom": "^6.22.2"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "express": "^4.19.1",
     "get-port": "5.0.0",
     "socket.io": "^4.7.5"
-  }
+  },
+  "keywords": []
 }
