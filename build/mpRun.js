@@ -113,7 +113,7 @@ io.on("connection", (socket) => {
         (err) => {}
       );
 
-      const log = execSync(`webpack --env srcPath=${srcPath}`, {
+      const log = execSync(`webpack --env srcPath=${srcPath} status=test`, {
         cwd: __dirname2,
         encoding: "utf8",
       });
