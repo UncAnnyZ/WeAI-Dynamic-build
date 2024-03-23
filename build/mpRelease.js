@@ -99,7 +99,7 @@ const startServer = async () => {
     server.listen(availablePort, () => {
       console.log(`Server running on port ${availablePort}`);
       openUrl(
-        "http://we.biubbmk.cn/baota/front/chat/index.htm/#/pages/Hot/HotRemote/index?host=127.0.0.1:" +
+        "http://we.biubbmk.cn/baota/front/chat/index.html#/pages/Hot/HotRemote/index?host=127.0.0.1:" +
           availablePort
       );
     });
