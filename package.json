@@ -1,6 +1,6 @@
 {
   "name": "@we-dynamic/build",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "we-dynamic build react",
   "main": "index.mjs",
   "bin": {
@@ -20,7 +20,14 @@
     "url": "https://github.com/UncAnnyZ/WeAI-Dynamic-build/issues"
   },
   "homepage": "https://github.com/UncAnnyZ/WeAI-Dynamic-build#readme",
-  "devDependencies": {
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "esbuild": "^0.20.2",
+    "express": "^4.19.1",
+    "get-port": "5.0.0",
+    "socket.io": "^4.7.5",
     "@babel/core": "^7.23.2",
     "@babel/plugin-transform-react-jsx": "^7.22.15",
     "@babel/plugin-transform-runtime": "^7.23.2",
@@ -39,14 +46,6 @@
     "pako": "^2.0.4",
     "postcss-value-parser": "^3.3.0",
     "react-router-dom": "^6.22.2"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "express": "^4.19.1",
-    "get-port": "5.0.0",
-    "socket.io": "^4.7.5"
   },
   "keywords": []
 }
