@@ -54,7 +54,7 @@ class SloveCss {
             var inlineScript = document.createElement('script');
             console.log(555555551);
             inlineScript.innerHTML = 
-            "var url = new URL(window.location.href.replace('/#/', '/'));" + 
+            "var url = new URL(window.location.href.replace('/#/', '/').replace('#/', '/'));" + 
             "var params = new URLSearchParams(url.search);" + 
             "var host = params.get('host');" + 
             "var socket = io('http://' + host);console.log(socket);" +
