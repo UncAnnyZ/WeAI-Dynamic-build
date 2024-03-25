@@ -25,7 +25,7 @@ class SloveCss {
         js = js.replace(/React\./g, "we.");
 
         // 移除开头的部分
-        const startCode = '!function(){"use strict";';
+        const startCode = '!function(){';
         const startIndex = js.indexOf(startCode);
         js = js.substring(startIndex + startCode.length);
 
