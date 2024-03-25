@@ -25,12 +25,12 @@ class SloveCss {
         js = js.replace(/React\./g, "we.");
 
         // 移除开头的部分
-        const startCode = '(()=>{"use strict";';
+        const startCode = '!function(){"use strict";';
         const startIndex = js.indexOf(startCode);
         js = js.substring(startIndex + startCode.length);
 
         // 移除结尾的部分
-        const endCode = "})();";
+        const endCode = "}();";
         const endIndex = js.lastIndexOf(endCode);
 
         js = js.substring(0, endIndex);
