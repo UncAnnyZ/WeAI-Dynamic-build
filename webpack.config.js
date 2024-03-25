@@ -18,6 +18,7 @@ module.exports = (env) => {
       "react-dom": "ReactDOM",
       ToXml: "ToXml",
     },
+    target: ['web', 'es5'],
     output: {
       path: path.join(srcPath, "./.weDynamic/dist"),
       filename: "index.js",
