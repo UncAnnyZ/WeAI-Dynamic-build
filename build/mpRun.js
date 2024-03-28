@@ -91,6 +91,10 @@ const a = [];
 
 const filePath = path.join(srcPath, "./src");
 
+const watchOptions = {
+  recursive: true,
+};
+
 fs.watch(filePath, watchOptions, () => {
   if (a.length === 0) {
     execSync(`webpack --env srcPath=${srcPath} status=test`, {
