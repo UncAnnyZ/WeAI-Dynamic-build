@@ -59,7 +59,7 @@ function ensureDirectoryExistence(filePath) {
 const deleteFs = (folderPath) => {
   if (fs.existsSync(folderPath)) {
     // 删除文件夹
-    fs.rmdirSync(folderPath);
+    fs.rmdirSync(folderPath, { recursive: true });
 } else {
     console.log('Folder does not exist');
 }
