@@ -56,6 +56,15 @@ function ensureDirectoryExistence(filePath) {
   fs.mkdirSync(dirname);
 }
 
+const deleteFs = (folderPath) => {
+  if (fs.existsSync(folderPath)) {
+    // 删除文件夹
+    fs.rmdirSync(folderPath);
+} else {
+    console.log('Folder does not exist');
+}
+}
+
 // 自定义插件
 class SloveCss {
   constructor(srcPath) {
@@ -70,6 +79,7 @@ class SloveCss {
         this.srcPath,
         "./.weDynamic/srcBuild"
       );
+      deleteFs(destinationFolder)
       ensureDirectoryExistence(destinationFolder);
       copyFolder(sourceFolder, destinationFolder);
 

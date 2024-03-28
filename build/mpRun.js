@@ -16,7 +16,6 @@ const srcPath = inputArray[0];
 
 const __dirname2 = inputArray[1];
 
-
 /**
  * 打开网页的函数
  * @param {string} url 要打开的网址
@@ -69,12 +68,12 @@ app.use((req, res, next) => {
 });
 
 app.get("/mock", (req, res) => {
-  const mock = req.query("mock");
-  let js = fs.readFileSync(
-    path.join(srcPath, "./.weDynamic/dist/mock.json"),
-    "utf-8"
-  );
-  res.send(js);
+  try {
+    let mock = fs.readFileSync(path.join(srcPath, "./mock/mock.json"), "utf-8");
+    res.send({ mock: JSON.parse(mock) });
+  } catch {
+    res.send({ mock: "" });
+  }
 });
 
 app.get("/source", (req, res) => {
@@ -87,6 +86,17 @@ app.get("/source", (req, res) => {
 
 let lastExecuted = 0;
 const throttleInterval = 1000; // 设置节流间隔为1000毫秒
+
+const a = [];
+
+fs.watch(filePath, watchOptions, () => {
+  if (a.length === 0) {
+    execSync(`webpack --env srcPath=${srcPath} status=test`, {
+      cwd: __dirname2,
+      encoding: "utf8",
+    });
+  }
+});
 
 // 处理Socket.IO连接
 io.on("connection", (socket) => {
@@ -103,7 +113,6 @@ io.on("connection", (socket) => {
       lastExecuted = now;
       let logTime = new Date().getTime().toString();
 
-      a = false;
       fs.writeFileSync(
         path.join(srcPath, "./.weDynamic/dist/log.data"),
         logTime,
@@ -132,8 +141,10 @@ io.on("connection", (socket) => {
       socket.emit("fileChanged");
     }
   });
+  a.push(1);
 
   socket.on("disconnect", () => {
+    a.pop(1);
     watcher.close();
     console.log("user disconnected");
   });

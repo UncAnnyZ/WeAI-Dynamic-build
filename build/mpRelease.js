@@ -67,12 +67,12 @@ app.use((req, res, next) => {
 });
 
 app.get("/mock", (req, res) => {
-  const mock = req.query("mock");
-  let js = fs.readFileSync(
-    path.join(srcPath, "./.weDynamic/dist/mock.json"),
-    "utf-8"
-  );
-  res.send(js);
+  try {
+    let mock = fs.readFileSync(path.join(srcPath, "./mock/mock.json"), "utf-8");
+    res.send({ mock: JSON.parse(mock) });
+  } catch {
+    res.send({ mock: "" });
+  }
 });
 
 app.get("/source", (req, res) => {
@@ -83,12 +83,14 @@ app.get("/source", (req, res) => {
   res.send({ code: js });
 });
 
+
 app.get("/config", (req, res) => {
-  let js = fs.readFileSync(
-    path.join(srcPath, "./config.json"),
-    "utf-8"
-  );
-  res.send({ code: js });
+  try {
+    let config = fs.readFileSync(path.join(srcPath, "./config.json"), "utf-8");
+    res.send({ mock: JSON.parse(config) });
+  } catch {
+    res.send({ mock: "" });
+  }
 });
 
 const port = 8010;
@@ -99,7 +101,7 @@ const startServer = async () => {
     server.listen(availablePort, () => {
       console.log(`Server running on port ${availablePort}`);
       openUrl(
-        "https://we.biubbmk.cn/baota/front/chat/index.html#/pages/Hot/HotRemote/index?host=127.0.0.1:" +
+        "https://we.biubbmk.cn/baota/front/chat/index.html#/pages/Hot/HotRelease/index?host=127.0.0.1:" +
           availablePort
       );
     });
