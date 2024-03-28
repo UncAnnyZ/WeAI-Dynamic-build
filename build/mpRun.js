@@ -89,6 +89,8 @@ const throttleInterval = 1000; // 设置节流间隔为1000毫秒
 
 const a = [];
 
+const filePath = path.join(srcPath, "./src");
+
 fs.watch(filePath, watchOptions, () => {
   if (a.length === 0) {
     execSync(`webpack --env srcPath=${srcPath} status=test`, {
@@ -104,7 +106,7 @@ io.on("connection", (socket) => {
     recursive: true,
   };
 
-  const filePath = path.join(srcPath, "./src");
+
 
   const watcher = fs.watch(filePath, watchOptions, () => {
     const now = Date.now();
