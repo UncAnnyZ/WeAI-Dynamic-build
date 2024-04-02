@@ -14,6 +14,8 @@ const srcPath = inputArray[0];
 
 const __dirname2 = inputArray[1];
 
+const crypto = require('crypto');
+
 const getPort = require("get-port");
 /**
  * 打开网页的函数
@@ -76,20 +78,24 @@ app.get("/mock", (req, res) => {
 });
 
 app.get("/source", (req, res) => {
-  let js = fs.readFileSync(
+  let zipCode = fs.readFileSync(
     path.join(srcPath, "./.weDynamic/dist/ast.we"),
     "utf-8"
   );
-  res.send({ code: js });
+  let js = fs.readFileSync(
+    path.join(srcPath, "./.weDynamic/dist/index.js"),
+    "utf-8"
+  );
+  const txt2Hash = crypto.createHash("md5").update(zipCode).digest("hex");
+  res.send({ jsContent: js, jsMd5: txt2Hash, zipCode, code: zipCode });
 });
-
 
 app.get("/config", (req, res) => {
   try {
     let config = fs.readFileSync(path.join(srcPath, "./config.json"), "utf-8");
-    res.send({ mock: JSON.parse(config) });
+    res.send({ config: JSON.parse(config) });
   } catch {
-    res.send({ mock: "" });
+    res.send({ config: {} });
   }
 });
 

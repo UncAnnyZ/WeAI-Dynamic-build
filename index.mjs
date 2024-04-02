@@ -10,7 +10,7 @@ const inputArray = process.argv.splice(2);
 
 const runType = inputArray[0];
 
-const canUseType = ["build", "watch"];
+const canUseType = ["build", "watch", "release"];
 
 const folderPath = "./.weDynamic";
 
