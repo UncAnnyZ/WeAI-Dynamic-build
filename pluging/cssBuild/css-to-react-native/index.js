@@ -82,7 +82,7 @@ var transformRawValue = function transformRawValue(input) {
     if (isViewportUnit) {
       return "scaleVu2dp(".concat(num, ", '").concat(unit, "')");
     } else if (/(\d+)px/.test(value)) {
-      return "scalePx2dp(".concat(num, ")");
+      return value;
     } else {
       return num / 2 + "PX";
     }

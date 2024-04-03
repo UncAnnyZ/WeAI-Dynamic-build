@@ -75,7 +75,7 @@ var regExpToken = function regExpToken(regExp) {
     if (isViewportUnit) {
       return "scaleVu2dp(".concat(value, ", '").concat(unit, "')");
     } else if (/(\d+)px/.test(node.value)) {
-      return "scalePx2dp(".concat(value, ")");
+      return node.value;
     } else {
       return value;
     }
